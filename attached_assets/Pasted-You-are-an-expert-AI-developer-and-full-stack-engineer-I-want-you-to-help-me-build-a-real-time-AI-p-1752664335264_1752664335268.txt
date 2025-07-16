@@ -1,0 +1,85 @@
+You are an expert AI developer and full-stack engineer. I want you to help me build a real-time AI-powered web application called **SmartTrade AI**.
+
+🎯 Objective:
+The app allows users to input a prompt like:
+> “Which trade should I take now?”
+
+The app must use real-time data and AI reasoning to output:
+- Top 4 crypto coins
+- Top 4 stocks
+
+Each trade must include:
+- Target price
+- Stop loss
+- Entry & exit point
+- Trend (bullish/bearish)
+- Projected return
+- Final score (out of 100)
+- Risk level (Low / Medium / High)
+- Quick explanation
+- Timeframe-based results (from 1 min to 1 month)
+
+---
+
+🧠 AI Agent Flow:
+
+1. **Frontend** (React + Tailwind):
+   - Input prompt field
+   - Dropdown: Select timeframe (1min, 5min, 15min, 30min, 1H, 4H, 1D, 1W, 1M)
+   - Dropdown or toggle: Risk level (Low/Medium/High)
+   - Submit button and clean output section
+
+2. **Backend** (Node.js or Python FastAPI):
+   - Fetch live crypto data from **CoinGecko API**
+   - Fetch live stock data from **Alpha Vantage API**
+   - Fetch sentiment/news from **Google News** and **Twitter API**
+   - Extract market indicators: RSI, MACD, Volume, MA
+
+3. **Scoring Algorithm**:
+score = (profit_potential * 0.4) + (security_score * 0.3) + (trend_score * 0.3)
+
+markdown
+Copy
+Edit
+
+4. **Use OpenRouter** to query:
+- OpenAI (GPT-4-turbo) or Gemini-Pro (via OpenRouter)
+- Send the market/sentiment data + user's query
+- Ask the AI to generate final recommendations based on all inputs
+
+5. **AI Output Format**:
+✅ Trade Suggestion: [Asset Name] ([Symbol])
+📈 Projected Return: +X% in [Selected Timeframe]
+🎯 Target Price: $X
+🛑 Stop Loss: $X
+🔁 Entry: $X | Exit: $X
+🧠 Trend: Bullish/Bearish
+⚠️ Risk Level: Low/Medium/High
+🧮 Score: XX/100
+💬 Why: [Quick insight]
+
+yaml
+Copy
+Edit
+
+6. **Frontend Displays the AI Output Cleanly**:
+- Show cards or table for top 4 crypto + 4 stocks
+- Highlight trend, risk, and projected gain
+
+---
+
+🛠️ Requirements:
+- Use **OpenRouter API** for AI reasoning (API key required)
+- Don’t include monetization or login/signup
+- Ensure clear architecture:
+- `/api/analyze` endpoint receives user prompt + timeframe + risk
+- Backend fetches data, constructs payload, and sends to OpenRouter model
+- Returns structured trade suggestions
+
+---
+
+✅ Your task:
+Start by generating:
+1. Folder structure
+2. Backend with OpenRouter + CoinGecko + Alpha Vantage integration
+3. Frontend React UI with prompt input, timeframe, risk filter, and result display
